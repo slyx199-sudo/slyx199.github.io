@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dark Profile</title>
+<title>SLy</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
@@ -16,20 +16,11 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #fff;
     overflow: hidden;
-}
 
-/* ===== Parallax Background ===== */
-.bg {
-    position: fixed;
-    top: -5%;
-    left: -5%;
-    width: 110%;
-    height: 110%;
+    /* ===== Background with overlay ===== */
     background:
         linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.9)),
-        url("bg.jpg") center / cover no-repeat;
-    transition: transform 0.1s linear;
-    z-index: -2;
+        url("bg.jpg.jpg") center / cover no-repeat fixed;
 }
 
 /* subtle noise overlay */
@@ -51,6 +42,7 @@ body {
     backdrop-filter: blur(18px);
     text-align: center;
     box-shadow: 0 0 50px rgba(0,0,0,0.9);
+    z-index: 1;
 }
 
 h1 {
@@ -99,7 +91,6 @@ h1 {
 
 <body>
 
-<div class="bg" id="bg"></div>
 <div class="noise"></div>
 
 <div class="card">
@@ -124,12 +115,11 @@ h1 {
 
 <script>
 /* ===== Mouse Parallax Effect ===== */
-const bg = document.getElementById("bg");
-
+const card = document.querySelector('.card');
 document.addEventListener("mousemove", (e) => {
     const x = (e.clientX / window.innerWidth - 0.5) * 20;
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
-    bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+    card.style.transform = `translate(${x/2}px, ${y/2}px)`;
 });
 </script>
 
