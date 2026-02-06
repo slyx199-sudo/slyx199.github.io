@@ -2,93 +2,95 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>huh?</title>
+<title>Dark Profile</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
-
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
     height: 100vh;
-    background: radial-gradient(circle at top, #0b0b0b, #000);
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
 }
 
-/* animated background */
+/* ===== Parallax Background ===== */
 .bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
     background:
-        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: move 20s linear infinite;
-    opacity: 0.2;
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.9)),
+        url("bg.jpg") center / cover no-repeat;
+    transition: transform 0.1s linear;
+    z-index: -2;
 }
 
-@keyframes move {
-    from { background-position: 0 0; }
-    to   { background-position: 400px 400px; }
+/* subtle noise overlay */
+.noise {
+    position: fixed;
+    inset: 0;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.08;
+    z-index: -1;
+    pointer-events: none;
 }
 
+/* ===== Card ===== */
 .card {
     position: relative;
-    background: rgba(255,255,255,0.05);
-    padding: 40px 50px;
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.06);
+    padding: 40px 55px;
+    border-radius: 22px;
+    backdrop-filter: blur(18px);
     text-align: center;
-    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    box-shadow: 0 0 50px rgba(0,0,0,0.9);
 }
 
 h1 {
     font-weight: 300;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
 }
 
+/* ===== Icons ===== */
 .icons {
     display: flex;
-    gap: 30px;
+    gap: 35px;
     justify-content: center;
 }
 
 .icon {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     background: rgba(255,255,255,0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 30px;
     color: #fff;
     text-decoration: none;
-    transition: 0.4s;
-    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    transition: 0.4s ease;
+    box-shadow: 0 0 25px rgba(0,0,0,0.8);
 }
 
 .icon:hover {
-    transform: translateY(-8px) scale(1.1);
-    box-shadow: 0 0 30px #ffffff55;
+    transform: translateY(-10px) scale(1.12);
+    box-shadow: 0 0 35px rgba(255,255,255,0.35);
 }
 
 .discord:hover { color: #5865F2; }
-.instagram:hover {
-    color: #E1306C;
-}
+.instagram:hover { color: #E1306C; }
 
 .username {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 13px;
     opacity: 0.7;
 }
@@ -96,10 +98,12 @@ h1 {
 </head>
 
 <body>
-<div class="bg"></div>
+
+<div class="bg" id="bg"></div>
+<div class="noise"></div>
 
 <div class="card">
-    <h1>Connect</h1>
+    <h1>CONNECT</h1>
 
     <div class="icons">
         <div>
@@ -110,13 +114,24 @@ h1 {
         </div>
 
         <div>
-            a class="icon instagram" href="https://instagram.com/x.3do" target="_blank" title="Instagram">
+            <a class="icon instagram" href="https://instagram.com/x.3do" target="_blank" title="Instagram">
                 <i class="fa-brands fa-instagram"></i>
             </a>
             <div class="username">x.3do</div>
         </div>
     </div>
 </div>
+
+<script>
+/* ===== Mouse Parallax Effect ===== */
+const bg = document.getElementById("bg");
+
+document.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+});
+</script>
+
 </body>
 </html>
-
