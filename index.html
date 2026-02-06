@@ -1,102 +1,121 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>huh ?</title>
+<title>huh?</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
 
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
     height: 100vh;
-    background: radial-gradient(circle at top, #0f0f0f, #000);
-    color: #00ff9c;
-    font-family: 'Share Tech Mono', monospace;
+    background: radial-gradient(circle at top, #0b0b0b, #000);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
-.terminal {
-    background: rgba(0,0,0,0.75);
-    border: 1px solid #00ff9c;
-    border-radius: 12px;
-    width: 420px;
-    padding: 25px;
-    box-shadow: 0 0 25px #00ff9c55;
+/* animated background */
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: move 20s linear infinite;
+    opacity: 0.2;
 }
 
-.header {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
+@keyframes move {
+    from { background-position: 0 0; }
+    to   { background-position: 400px 400px; }
 }
 
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+.card {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    padding: 40px 50px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
 }
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
 
 h1 {
-    font-size: 22px;
-    margin: 10px 0;
+    font-weight: 300;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
 }
 
-p {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.9;
+.icons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 18px;
-    padding: 10px 22px;
-    color: #000;
-    background: #00ff9c;
-    border-radius: 20px;
+.icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+    transition: 0.4s;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
 
-.btn:hover {
-    background: #fff;
-    box-shadow: 0 0 15px #00ff9c;
+.icon:hover {
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 0 30px #ffffff55;
+}
+
+.discord:hover { color: #5865F2; }
+.instagram:hover {
+    color: #E1306C;
+}
+
+.username {
+    margin-top: 8px;
+    font-size: 13px;
+    opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
-<div class="terminal">
-    <div class="header">
-        <div class="dot red"></div>
-        <div class="dot yellow"></div>
-        <div class="dot green"></div>
+<div class="bg"></div>
+
+<div class="card">
+    <h1>Connect</h1>
+
+    <div class="icons">
+        <div>
+            <a class="icon discord" href="#" title="Discord">
+                <i class="fa-brands fa-discord"></i>
+            </a>
+            <div class="username">_3o_</div>
+        </div>
+
+        <div>
+            <a class="icon instagram" href="#" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <div class="username">x.3do</div>
+        </div>
     </div>
-
-    <h1>root@slyx:~#</h1>
-    <p>
-        Welcome.<br>
-        This page is live on GitHub Pages.<br>
-        Status: <b>ONLINE</b>
-    </p>
-
-    <a>
-        Access GitHub
-    </a>
 </div>
 </body>
 </html>
-
-
-
-
-
